@@ -1,5 +1,6 @@
 #"head" do flask, importações iniciais, definição da variável "app", da secret kay
 from flask import Flask, render_template, request, redirect, flash
+from utilidades import validador
 app = Flask(__name__)
 app.secret_key = 'Fabricio'
 #classe que unifica os dados do usuário, em outras palavras uma conta (futuramente serão guardados em um banco de dados)
@@ -25,7 +26,7 @@ def logar():
 def autenticar_login():
     email = request.form['Email']
     senha = request.form['SenhaLogin']
-    if email == 'fab' and senha == '123':
+    if validador(email,1) and validador(senha,2):
         return render_template('site.html')
     else:
         flash('DIGITASTE ALGO ERRADO')
@@ -41,7 +42,7 @@ def autenticar_conta():
     #guarda as contas criadas num arquivo txt sem segurança nenhuma
     #futuramente haverá uma validação de armazenar ou não de acordo com se já tem no arquivo
     with open ("contas.txt",'a') as contas:
-        contas.write(f"{nome}\n{email}\n{senha}\n")
+        contas.write(f"\n{nome.replace(' ','-')} {email} {senha.replace(' ','-')}")
     return redirect('/')
 
 #retorna a página de criar conta (sem estilização)
