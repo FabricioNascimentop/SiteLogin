@@ -26,6 +26,7 @@ def logar():
 def autenticar_login():
     email = request.form['Email']
     senha = request.form['SenhaLogin']
+    senha = str(senha).replace(' ','-')
     if validador(email,1) and validador(senha,2):
         return render_template('site.html')
     else:
@@ -36,8 +37,12 @@ def autenticar_login():
 #futuramente autenticará a validade de email
 @app.route('/autenticar conta',methods=['POST',])
 def autenticar_conta():
-    nome = request.form.get("Nomecriarconta")
+    #request.form.get("Nomecriarconta") = pega o valor do input "nome" do HTML; request.form.get("Nomecriarconta") = nome
+    #validação pra saber se o nome colocado tem pelo menos 3 letras
+    if len(request.form.get("Nomecriarconta")) >= 3:
+        nome = request.form.get("Nomecriarconta")
     email = request.form.get("Emailcriarconta")
+
     senha = request.form.get("Senhacriaconta")
     #guarda as contas criadas num arquivo txt sem segurança nenhuma
     #futuramente haverá uma validação de armazenar ou não de acordo com se já tem no arquivo

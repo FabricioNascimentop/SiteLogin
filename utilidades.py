@@ -12,3 +12,13 @@ retorna True quando o arquivo contas.txt possui o "str" na categoria "índice
                 return True
 
 
+def listador(indice):
+    """
+    Listas todos os elementos no índice pedido, o sendo:
+    0 - nomes
+    1 - emails
+    2 - senhas
+"""
+    with open ('contas.txt','r') as contas:
+        for coisas in contas.readlines():
+            print(coisas.split()[indice])
