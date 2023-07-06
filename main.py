@@ -37,17 +37,19 @@ def autenticar_login():
 #futuramente autenticará a validade de email
 @app.route('/autenticar conta',methods=['POST',])
 def autenticar_conta():
-    #request.form.get("Nomecriarconta") = pega o valor do input "nome" do HTML; request.form.get("Nomecriarconta") = nome
     #validação pra saber se o nome colocado tem pelo menos 3 letras
-    if len(request.form.get("Nomecriarconta")) >= 3:
-        nome = request.form.get("Nomecriarconta")
+    nome = request.form.get("Nomecriarconta")
     email = request.form.get("Emailcriarconta")
-
     senha = request.form.get("Senhacriaconta")
+    #if len(nome) >= 3 and email = :
+
     #guarda as contas criadas num arquivo txt sem segurança nenhuma
     #futuramente haverá uma validação de armazenar ou não de acordo com se já tem no arquivo
-    with open ("contas.txt",'a') as contas:
-        contas.write(f"\n{nome.replace(' ','-')} {email} {senha.replace(' ','-')}")
+    if nome  and email != None and senha != None:
+        with open ("contas.txt",'a') as contas:
+            contas.write(f"\n{nome.replace(' ','-')} {email} {senha.replace(' ','-')}")
+    else:
+        flash('há algo de errado na sua criação de conta')
     return redirect('/')
 
 #retorna a página de criar conta (sem estilização)

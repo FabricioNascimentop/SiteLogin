@@ -22,3 +22,25 @@ def listador(indice):
     with open ('contas.txt','r') as contas:
         for coisas in contas.readlines():
             print(coisas.split()[indice])
+
+
+
+def validador_nome(nome):
+    if len(nome) > 3:
+        return True
+
+def validador_senha(senha):
+    import re
+    padrao = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+    if padrao:
+        return True
+
+
+
+def validar_email(email):
+    import re
+    padrao = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return True
+
+
+print(validador_senha('a'))
