@@ -1,4 +1,4 @@
-with open("contas.txt","r") as contas:
-    for palavras in contas.readlines():
-        palavras = palavras.split()
-        print(palavras[1])
+with open('contas.txt','r') as contas:
+    for conta in contas:
+        conta = conta.split()
+        print(conta[1])

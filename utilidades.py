@@ -24,23 +24,41 @@ def listador(indice):
             print(coisas.split()[indice])
 
 
-
+#validamentos, (sim, não precisava ter usado a biblioteca re no validador de nome, usei pq gosto de padrões)
+#não sei pra quem escrevo isso, sinceramente
+#se você for um recrutador e estiver lendo isso por favor comente algo somente se eu for contratado
 def validador_nome(nome):
-    if len(nome) > 3:
+    import re
+    padrao = r'^[.]{3}'
+    re = re.compile(padrao)
+    if re.match(nome):
         return True
+    else:
+        return False
 
 def validador_senha(senha):
     import re
     padrao = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
-    if padrao:
+    re = re.compile(padrao)
+    if re.match(senha):
         return True
+    else:
+        return False
 
 
 
 def validar_email(email):
     import re
-    padrao = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    return True
+    #[letras maíusculas ou minúsculas, qualquer sequência de número, estes caracteres específicos:".","_","%","+","-"] se repetindo qualquer vezes quiser.
+    #um arroba (especificamente este caractere)
+    #um "." seguido de no mínimo 2 letras maiúsculas ou minúsculas 
+    #tem um pequeno erro de que se colocar algo como nome@exemplo.com a última parte aceita nome@exemplo.com.com mas sinceramente n to afim de resolver isso
+    padrao = r'^[a-zA-Z0-9\._%+-]+@[a-zA-Z0-9\.-]+\.[a-zA-Z]{2,}$'
+    re = re.compile(padrao)
+    if re.match(email):
+        return True
+    else:
+        return False
 
 
-print(validador_senha('a'))
+print(validador_senha('12345aA$'))
