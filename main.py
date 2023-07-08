@@ -1,14 +1,8 @@
 #"head" do flask, importações iniciais, definição da variável "app", da secret kay
 from flask import Flask, render_template, request, redirect, flash
-from utilidades import validador
+import utilidades
 app = Flask(__name__)
 app.secret_key = 'Fabricio'
-#classe que unifica os dados do usuário, em outras palavras uma conta (futuramente serão guardados em um banco de dados)
-class Usuario:
-    def __init__(self, nome, email, senha):
-        self.nome = nome
-        self.email = email
-        self.senha = senha
 
 #página inicial (sem estilização ainda)
 @app.route('/')
@@ -27,30 +21,39 @@ def autenticar_login():
     email = request.form['Email']
     senha = request.form['SenhaLogin']
     senha = str(senha).replace(' ','-')
-    if validador(email,1) and validador(senha,2):
+    if utilidades.validador(email,1) and utilidades.validador(senha,2):
         return render_template('site.html')
     else:
         flash('DIGITASTE ALGO ERRADO')
         return redirect('/login')
 
 #autenticar criação de conta 
-#futuramente autenticará a validade de email
 @app.route('/autenticar conta',methods=['POST',])
 def autenticar_conta():
-    #validação pra saber se o nome colocado tem pelo menos 3 letras
+    val = False
     nome = request.form.get("Nomecriarconta")
     email = request.form.get("Emailcriarconta")
     senha = request.form.get("Senhacriaconta")
-    #if len(nome) >= 3 and email = :
-
-    #guarda as contas criadas num arquivo txt sem segurança nenhuma
-    #futuramente haverá uma validação de armazenar ou não de acordo com se já tem no arquivo
-    if nome  and email != None and senha != None:
-        with open ("contas.txt",'a') as contas:
-            contas.write(f"\n{nome.replace(' ','-')} {email} {senha.replace(' ','-')}")
+    if utilidades.validador_senha(senha):
+        if utilidades.validador_email(email):
+            if utilidades.validador_nome(nome):
+                if utilidades.repetido_email(email) == False:
+                    with open ("contas.txt",'a') as contas:
+                        contas.write(f"\n{nome.replace(' ','-')} {email} {senha.replace(' ','-')}")
+                        val = True
+                else:
+                    flash('o email já está sendo utilizado')
+            else:
+                flash('o nome não é válido')
+        else:
+            flash('o email não é válido')
     else:
-        flash('há algo de errado na sua criação de conta')
-    return redirect('/')
+        flash('a senha não é válida')
+    if val:
+        return redirect('/')
+    else:
+        return redirect('/criar conta')
+
 
 #retorna a página de criar conta (sem estilização)
 @app.route('/criar conta')

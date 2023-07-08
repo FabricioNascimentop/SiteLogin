@@ -29,7 +29,7 @@ def listador(indice):
 #se você for um recrutador e estiver lendo isso por favor comente algo somente se eu for contratado
 def validador_nome(nome):
     import re
-    padrao = r'^[.]{3}'
+    padrao = r'^[A-Za-zÀ-ÿ\s\'-]+$'
     re = re.compile(padrao)
     if re.match(nome):
         return True
@@ -38,7 +38,7 @@ def validador_nome(nome):
 
 def validador_senha(senha):
     import re
-    padrao = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+    padrao = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-_=+{}[\]|\\;:",.<>/?]{8,15}$'
     re = re.compile(padrao)
     if re.match(senha):
         return True
@@ -47,7 +47,7 @@ def validador_senha(senha):
 
 
 
-def validar_email(email):
+def validador_email(email):
     import re
     #[letras maíusculas ou minúsculas, qualquer sequência de número, estes caracteres específicos:".","_","%","+","-"] se repetindo qualquer vezes quiser.
     #um arroba (especificamente este caractere)
@@ -60,5 +60,15 @@ def validar_email(email):
     else:
         return False
 
+#verifica se há outro email já cadastrado em "contas.txt"
+def repetido_email(email):
+    with open('contas.txt','r') as contas:
+        for conta in contas:
+            conta = conta.split()
+            if conta[1] == str(email):
+                return True
+        return False
 
-print(validador_senha('12345aA$'))
+
+
+print(repetido_email('joaobosco@gmail.com'))

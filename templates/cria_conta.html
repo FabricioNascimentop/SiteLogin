@@ -17,5 +17,12 @@
         <button type="submit">Enviar</button> 
     </form>
     <a href="/login">voltar ao login</a>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 </body>
 </html>
