@@ -29,7 +29,7 @@ def listador(indice):
 #se você for um recrutador e estiver lendo isso por favor comente algo somente se eu for contratado
 def validador_nome(nome):
     import re
-    padrao = r'^[A-Za-zÀ-ÿ\s\'-]+$'
+    padrao = r'^[A-Za-zÀ-ÿ\s\'-]{3,16}'
     re = re.compile(padrao)
     if re.match(nome):
         return True
@@ -38,7 +38,7 @@ def validador_nome(nome):
 
 def validador_senha(senha):
     import re
-    padrao = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-_=+{}[\]|\\;:",.<>/?]{8,15}$'
+    padrao = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-_=+{}[\]|\\;:",.<>/?]{8,}$'
     re = re.compile(padrao)
     if re.match(senha):
         return True

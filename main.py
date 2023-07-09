@@ -31,28 +31,38 @@ def autenticar_login():
 @app.route('/autenticar conta',methods=['POST',])
 def autenticar_conta():
     val = False
+    n = 0
     nome = request.form.get("Nomecriarconta")
     email = request.form.get("Emailcriarconta")
     senha = request.form.get("Senhacriaconta")
-    if utilidades.validador_senha(senha):
-        if utilidades.validador_email(email):
-            if utilidades.validador_nome(nome):
-                if utilidades.repetido_email(email) == False:
-                    with open ("contas.txt",'a') as contas:
-                        contas.write(f"\n{nome.replace(' ','-')} {email} {senha.replace(' ','-')}")
-                        val = True
-                else:
-                    flash('o email já está sendo utilizado')
-            else:
-                flash('o nome não é válido')
-        else:
-            flash('o email não é válido')
+
+    if utilidades.validador_senha(senha) == False:
+        flash(' a senha não é válida ')
     else:
-        flash('a senha não é válida')
+        n += 1
+    if utilidades.validador_email(email) == False:
+        flash(' o email não é válido ')
+    else:
+        n += 1
+    if utilidades.validador_nome(nome) == False:
+        flash(' este nome não é válido ')
+    else:
+        n += 1
+    if utilidades.repetido_email(email) == True:
+        flash(' esta email  já está cadastrado  ')
+    else:
+        n += 1
+    
+    if n == 4:
+        val = True
+
     if val:
+        with open ("contas.txt",'a') as contas:
+            contas.write(f"\n{nome.replace(' ','-')} {email} {senha.replace(' ','-')}")
         return redirect('/')
     else:
-        return redirect('/criar conta')
+         return redirect('/criar conta')
+        
 
 
 #retorna a página de criar conta (sem estilização)

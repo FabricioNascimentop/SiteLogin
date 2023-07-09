@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +7,39 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1>Inicio do site</h1>
-    <p>logue para acessar</p>
-    <a href="/login">logar</a>
+    <div id="quadro_inicio">
+        <h1 id="inicio_h1">Inicio do site</h1>
+        <p id="inicio_p"><a href="/login" id="inicio_a">logue para acessar</a></p>
+    </div>
+    <div id="quadro_ul">
+        <h2 id="inicio_h2">Flask Backending</h2>
+    <ul id="ul_inicio">
+        <li>html e estilização css responsiva(WP)</li>
+        <li>as seguintes validações em cada categoria:
+            <ul id="dentro">
+                <li class="listrinha">email:</li>
+                    <ul>
+                        <li>apenas um cadastro no sistema</li>
+                        <li>validação baseada em emails reais, apenas letras, numeros e alguns caracteres especiais são permitidos tais como "_" ou "-"</li>
+                    </ul>
+                <li class="listrinha">nome:</li>
+                    <ul>
+                        <li>no mínimo 3 letras e no máximo 16</li>
+                        <li>permite e funciona com todas as variações do alfabeto latino</li>
+                        <li>aceita alguns caracteres especiais como o apóstrofos (') e o hífen (-) e espaços em branco</li>
+                    </ul>
+                <li class="listrinha">senha:</li>
+                    <ul>
+                        <li>no mínimo 8 caracteres</li>
+                        <li>no mínimo uma letra maiúscula</li>
+                        <li>no mínimo um número</li>
+                        <li>no mínimo um caractere especial  (@#$%^&*)</li>
+                    </ul>
+            </ul>
+        </li>
+        <li>feito com muito carinho e afinco para concretizar todas as horas de esforço que coloquei estudando e praticando, a realização de um projeto que apesar de pequeno é sólido como este é a prova de que o esforço move mundos</li>
+    </ul>
+    </div>
+    
 </body>
 </html>
