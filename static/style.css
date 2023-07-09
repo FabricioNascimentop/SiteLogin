@@ -4,7 +4,7 @@
     padding:0px;
 }
 body{
-    background-color: black;
+    background-color: rgb(10,14,20);
 }
 h1#inicio_h1{
     font-size: 48px;
@@ -15,7 +15,7 @@ h1#inicio_h1{
 h2#inicio_h2{
     font-size:24px;
     font-weight: 400;
-    background-color: rgb(2, 1, 60);
+    background-color: rgba(30, 40, 60, 0.5);
     width: 610px;
     padding: 15px;
     color: white;
@@ -39,7 +39,7 @@ p#inicio_p{
 ul{
     list-style-type: disc;
     text-align: justify;
-    background-color: rgba(255, 77, 0, 0.75);
+    background-color: #62a07b;
     padding: 20px;
     margin: auto;
     font-family: 'Roboto', sans-serif;
@@ -59,5 +59,5 @@ ul#ul_inicio{
     width: 600px;
 }
 div#quadro_inicio{
-    background-color: brown;
+    background-color: #613860;
 }
