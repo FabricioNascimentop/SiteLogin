@@ -7,22 +7,39 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1>Faça aqui seu Login</h1>
-    <form action="/autenticar login" method="post">
-        <label>Email:<input type="text" id="Email" name="Email"></label>
-        <br>
-        <label>Senha:<input type="text" id="SenhaLogin" name="SenhaLogin"></label>
-        <br>
-        <button type="submit">Enviar</button> 
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        <br>
+    <h1 id="login_h1">Efetue seu login</h1>
+    <div id="formulario">
+        <form action="/autenticar login" method="post">
+            <label>Email:<input type="text" id="Email" name="Email"></label>
+            <br>
+            <label>Senha:<input type="text" id="SenhaLogin" name="SenhaLogin"></label>
+            <br>
+            <button type="submit" id="login_button" onclick="esconder()">Enviar</button> 
+            <br>
+        </div>
+        <div id="login_flash">
+            {% with messagess = get_flashed_messages() %}
+                {% if messagess %}
+                    {% for message in messagess %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
         <a href="/criar conta">Criar conta</a>
     </form>
+    <script>
+        setInterval(esconder, 2200);
+        setInterval(matar, 3200);
+        function esconder(){
+            document.querySelector('#login_flash').style.animationName = 'sumidao'
+            document.querySelector('#login_flash').style.animationDuration = '1'
+            document.querySelector('#login_flash').style.animationIterationCount="1"
+        }
+        function matar(){
+            document.querySelector('#login_flash').style.display = 'none'
+        }
+    
+    </script>
 </body>
 </html>

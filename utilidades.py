@@ -71,4 +71,3 @@ def repetido_email(email):
 
 
 
-print(repetido_email('joaobosco@gmail.com'))

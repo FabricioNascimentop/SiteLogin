@@ -21,6 +21,12 @@ h1#inicio_h1{
     padding: 25px;
     background-color: rgb(245, 245, 245,0.5);
 }
+h1#login_h1{
+    color: var(--cor-letra-amarelo);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin-top: 10px;
+}
 h2#inicio_h2{
     font-size:24px;
     font-weight: 400;
@@ -89,6 +95,46 @@ polygon{
     66%{stroke: var(--cor-letra-amarelo); stroke-width: 1}
     100%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: -56; stroke-width: 2}
 }
+@keyframes sumidao{
+    to{
+        font-size: 0px;
+        overflow: hidden;
+    }
+}
 svg{
     margin-left: calc(50% - 100px);
+    margin-top: 0.5px;
+}
+
+
+div#formulario{
+    border: 1px solid rgba(100, 140, 200,0.25);
+    box-shadow: 0px 0px 100px 100px rgb(100, 140, 200,0.075);
+    margin-left: calc(50% - (50px + (500px/2)));
+    margin-right: calc(25% + 25px);
+    margin-top: 20px;
+    padding:15px;
+    background-color: rgba(250, 250, 255, 0.025)
+}
+label{
+    margin: auto;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+}
+input{
+    width: 500px;
+    height: 33px;
+    margin: 15px;
+    border-radius: 15px;
+}
+button#login_button{
+    padding: 8px;
+    margin-left: calc(50% - 50px);
+    width: 100px;
+    background-color: whitesmoke;
+}
+div#login_flash{
+color:crimson;
+background-color: rgba(172, 255, 47, 0.1);
+text-align: center;
 }

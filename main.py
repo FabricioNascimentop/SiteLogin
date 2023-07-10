@@ -24,7 +24,7 @@ def autenticar_login():
     if utilidades.validador(email,1) and utilidades.validador(senha,2):
         return render_template('site.html')
     else:
-        flash('DIGITASTE ALGO ERRADO')
+        flash('Email ou senha incorretos')
         return redirect('/login')
 
 #autenticar criação de conta 
