@@ -4,6 +4,7 @@
     --azul-claro: rgb(100,140,200);
     --cor-letra-padrao: rgb(15, 123, 217);
     --cor-letra-amarelo:rgb(255,180,0);
+    --cor-anotacao-verde: rgb(134,217,63);
     font-size: 1.3em;
   }
 *{
@@ -18,6 +19,7 @@ h1#inicio_h1{
     font-family: 'Roboto', sans-serif;
     text-align: center;
     padding: 25px;
+    background-color: rgb(245, 245, 245,0.5);
 }
 h2#inicio_h2{
     font-size:24px;
@@ -33,17 +35,14 @@ h2#inicio_h2{
     box-shadow: 0px 0px 20px 5px rgb(100, 140, 200,0.25);
 }
 a#inicio_a{
-    color: black;
-    font-size: 12px;
+    color: white;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    border: 2px solid black;
-    padding: 9px;
-    animation-name: borda;
-    animation-duration: 0.01s;
-    animation-iteration-count: infinite;
+    font-weight: 600;
+    text-align: center;
 }
 a#inicio_a:hover{
-    font-size: 24px;
+    text-decoration: underline;
 }
 p#inicio_p{
     text-align: center;
@@ -55,8 +54,8 @@ div#quadro_ul{
     width: 40%;
     padding: 16px;
 }
-div#quadro_inicio{
-    background-color: rgba(245, 245, 245, 0.9);
+header#inicio_header{
+    background-color: rgba(245, 245, 245, 0.25);
     height: 140px;
 }
 ul{
@@ -75,8 +74,21 @@ li.listrinha{
     text-decoration:underline;
 }
 li#final{
-    color: rgb(134,217,63)
+    color: var(--cor-anotacao-verde)
 }
-svg#svg_inicio{
-    
+polygon{
+    animation-name: bordinha;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction:inherit;
+    animation-timing-function: cubic-bezier(1, 1, 1, 1);
+}
+@keyframes bordinha{
+    0%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: 0; stroke-width: 2;}
+    33%{stroke: var(--cor-anotacao-verde); stroke-width: 1}
+    66%{stroke: var(--cor-letra-amarelo); stroke-width: 1}
+    100%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: -56; stroke-width: 2}
+}
+svg{
+    margin-left: calc(50% - 100px);
 }
