@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1>Crie aqui sua conta</h1>
-    <form action="/autenticar conta" method="post">
-        <label>Nome:<input type="text" name="Nomecriarconta"></label>
-        <br>
-        <label>Email:<input type="text" name="Emailcriarconta"></label>
-        <br>
-        <label>Senha:<input type="text" name="Senhacriaconta"></label>
-        <br>
-        <button type="submit">Enviar</button> 
-    </form>
-    <a href="/login">voltar ao login</a>
+    <h1 class="conta_h1">Crie aqui sua conta</h1>
+    <div class="conta_formulario">
+        <form action="/autenticar conta" method="post">
+            <label>Nome:<input type="text" name="Nomecriarconta"></label>
+            <br>
+            <label>Email:<input type="text" name="Emailcriarconta"></label>
+            <br>
+            <label>Senha:<input type="text" name="Senhacriaconta"></label>
+            <br>
+            <div class="conta_button_div">
+                <button type="submit" class="conta_button">Enviar</button> 
+                <p>ou</p>
+                <a href="/login" class="conta_a_bostao">login</a>
+            </div>
+        </form>
+    </div>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}

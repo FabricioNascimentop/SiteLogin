@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1 id="login_h1">Efetue seu login</h1>
-    <div id="formulario">
+    <h1 class="conta_h1">Efetue seu login</h1>
+    <div class="conta_formulario">
         <form action="/autenticar login" method="post">
             <label>Email:<input type="text" id="Email" name="Email"></label>
 
             <label>Senha:<input type="text" id="SenhaLogin" name="SenhaLogin"></label>
 
-            <div id="login_button_div">
-                <button type="submit" class="login_button" onclick="esconder()">Enviar</button>
-                <p id="login_p">ou</p>
-                <a href="/criar conta" id="login_a_bostao">criar conta</a>
+            <div class="conta_button_div">
+                <button type="submit" class="conta_button" onclick="esconder()">Enviar</button>
+                <p>ou</p>
+                <a href="/criar conta" class="conta_a_bostao">criar conta</a>
             </div>
         </div>
         <div id="login_flash">

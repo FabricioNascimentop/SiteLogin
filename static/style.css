@@ -21,7 +21,7 @@ h1#inicio_h1{
     padding: 25px;
     background-color: rgb(245, 245, 245,0.5);
 }
-h1#login_h1{
+h1.conta_h1{
     color: var(--cor-letra-amarelo);
     font-family: 'Roboto', sans-serif;
     font-weight: 350;
@@ -107,7 +107,7 @@ svg{
     margin-left: calc(50% - 100px);
     margin-top: 0.5px;
 }
-div#formulario{
+div.conta_formulario{
     border: 1px solid rgba(100, 140, 200,0.25);
     box-shadow: 0px 0px 100px 100px rgb(100, 140, 200,0.075);
     margin-left: calc(50% - (50px + (500px/2)));
@@ -127,7 +127,7 @@ input{
     margin: 15px;
     border-radius: 15px;
 }
-button.login_button{
+button.conta_button{
     padding: 8px;
     width: 115px;
     background-color: whitesmoke;
@@ -135,7 +135,7 @@ button.login_button{
     font-size: 18px;
     font-weight: 500;
 }
-a#login_a_bostao{
+a.conta_a_bostao{
     text-decoration: none;
     text-align: center;
     color: black;
@@ -154,12 +154,6 @@ background-color: rgba(172, 255, 47, 0.1);
 text-align: center;
 animation-duration: 1s;
 }
-p#login_p{
-    text-align: center;
-    color: white;
-    font-family: 'Comfortaa', cursive;
-    
-}
 div#criaconta{
     background-color: white;
     width: 100px;
@@ -170,12 +164,17 @@ div#criaconta{
     margin: 15px;
     text-align: center;
 }
-div#login_button_div{
+div.conta_button_div{
     display: flex;
     justify-content: space-evenly;
 }
-div#login_button_div>p{
-    font-size: 30px;
+div.conta_button_div>p{
+    font-size: 42px;
     margin-left: -80px;
     margin-right: -80px;
+    margin-top: -5px;
+    color:white;
+}
+main#site_main > h1{
+    text-align: center;
 }
