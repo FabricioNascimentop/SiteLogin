@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto:wght@300;500&display=swap');
 :root {
     --fundo-vs: rgb(10,14,20);
     --azul-claro: rgb(100,140,200);
@@ -24,12 +24,14 @@ h1#inicio_h1{
 h1#login_h1{
     color: var(--cor-letra-amarelo);
     font-family: 'Roboto', sans-serif;
+    font-weight: 350;
     text-align: center;
     margin-top: 10px;
+    font-size: 48px;
 }
 h2#inicio_h2{
     font-size:24px;
-    font-weight: 400;
+    font-weight: 300;
     background-color: rgb(30, 40, 60);
     width: 400px;
     color: white;
@@ -105,8 +107,6 @@ svg{
     margin-left: calc(50% - 100px);
     margin-top: 0.5px;
 }
-
-
 div#formulario{
     border: 1px solid rgba(100, 140, 200,0.25);
     box-shadow: 0px 0px 100px 100px rgb(100, 140, 200,0.075);
@@ -127,14 +127,55 @@ input{
     margin: 15px;
     border-radius: 15px;
 }
-button#login_button{
+button.login_button{
     padding: 8px;
-    margin-left: calc(50% - 50px);
-    width: 100px;
+    width: 115px;
     background-color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+a#login_a_bostao{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    background-color: whitesmoke;
+    padding: 8px;
+    width: 94px;
+    height: 23px;
+    border: 1px solid gray;
 }
 div#login_flash{
 color:crimson;
 background-color: rgba(172, 255, 47, 0.1);
 text-align: center;
+animation-duration: 1s;
+}
+p#login_p{
+    text-align: center;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    
+}
+div#criaconta{
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border: solid 1px var(--fundo-vs);
+    border-radius: 3px;
+    box-shadow:0px 0px 100px 100px rgb(100, 140, 200,0.075);
+    margin: 15px;
+    text-align: center;
+}
+div#login_button_div{
+    display: flex;
+    justify-content: space-evenly;
+}
+div#login_button_div>p{
+    font-size: 30px;
+    margin-left: -80px;
+    margin-right: -80px;
 }
