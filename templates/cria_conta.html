@@ -11,24 +11,63 @@
     <div class="conta_formulario">
         <form action="/autenticar conta" method="post">
             <label>Nome:<input type="text" name="Nomecriarconta"></label>
-            <br>
+
+            <div class="conta_flash">
+                {% with messages = get_flashed_messages(category_filter=["Nome"]) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
             <label>Email:<input type="text" name="Emailcriarconta"></label>
-            <br>
+            
+            <div class="conta_flash">
+                {% with messages = get_flashed_messages(category_filter=["Email"]) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
             <label>Senha:<input type="text" name="Senhacriaconta"></label>
-            <br>
+            
+            <div class="conta_flash">
+                {% with messages = get_flashed_messages(category_filter=["Senha"]) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
             <div class="conta_button_div">
                 <button type="submit" class="conta_button">Enviar</button> 
                 <p>ou</p>
                 <a href="/login" class="conta_a_bostao">login</a>
             </div>
+    
         </form>
     </div>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+
+    <script>
+        setInterval(esconder, 3200);
+        setInterval(matar, 4200);
+        function esconder(){
+            for(c=0;c < 4;c++){
+                document.querySelectorAll('.conta_flash')[c].style.animationName = 'sumidao'
+            }
+        }
+        function matar(){
+            for(c=0;c < 4;c++){
+                document.querySelectorAll('.conta_flash')[c].style.display = 'none'
+            }
+        }
+    </script>
 </body>
 </html>

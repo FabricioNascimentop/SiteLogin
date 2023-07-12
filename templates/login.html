@@ -20,7 +20,7 @@
                 <a href="/criar conta" class="conta_a_bostao">criar conta</a>
             </div>
         </div>
-        <div id="login_flash">
+        <div class="conta_flash">
             {% with messagess = get_flashed_messages() %}
                 {% if messagess %}
                     {% for message in messagess %}
@@ -34,12 +34,11 @@
         setInterval(esconder, 2200);
         setInterval(matar, 3200);
         function esconder(){
-            document.querySelector('#login_flash').style.animationName = 'sumidao'
+            document.querySelector('.conta_flash').style.animationName = 'sumidao'
         }
         function matar(){
-            document.querySelector('#login_flash').style.display = 'none'
+            document.querySelector('.conta_flash').style.display = 'none'
         }
-    
     </script>
 </body>
 </html>

@@ -148,11 +148,10 @@ a.conta_a_bostao{
     height: 23px;
     border: 1px solid gray;
 }
-div#login_flash{
-color:crimson;
-background-color: rgba(172, 255, 47, 0.1);
-text-align: center;
-animation-duration: 1s;
+div.conta_flash{
+    color:crimson;
+    text-align: center;
+    animation-duration: 1s;
 }
 div#criaconta{
     background-color: white;
@@ -167,6 +166,7 @@ div#criaconta{
 div.conta_button_div{
     display: flex;
     justify-content: space-evenly;
+    margin-top:15px;
 }
 div.conta_button_div>p{
     font-size: 42px;
@@ -177,4 +177,7 @@ div.conta_button_div>p{
 }
 main#site_main > h1{
     text-align: center;
+}
+div#sucesso{
+    color:white;
 }

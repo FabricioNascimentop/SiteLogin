@@ -1,15 +1,16 @@
 #"head" do flask, importações iniciais, definição da variável "app", da secret kay
 from flask import Flask, render_template, request, redirect, flash
 import utilidades
+from time import sleep
 app = Flask(__name__)
 app.secret_key = 'Fabricio'
 
-#página inicial (sem estilização ainda)
+#página inicial
 @app.route('/')
 def inicio():
     return render_template('index.html')
 
-#meramente a página de login (sem estilização)
+#meramente a página de login
 @app.route('/login')
 def logar():
     return render_template('login.html')
@@ -27,6 +28,7 @@ def autenticar_login():
         flash('Email ou senha incorretos')
         return redirect('/login')
 
+
 #autenticar criação de conta 
 @app.route('/autenticar conta',methods=['POST',])
 def autenticar_conta():
@@ -37,19 +39,19 @@ def autenticar_conta():
     senha = request.form.get("Senhacriaconta")
 
     if utilidades.validador_senha(senha) == False:
-        flash(' a senha não é válida ')
+        flash(' a senha não é válida','Senha')
     else:
         n += 1
     if utilidades.validador_email(email) == False:
-        flash(' o email não é válido ')
+        flash(' o email não é válido','Email')
     else:
         n += 1
     if utilidades.validador_nome(nome) == False:
-        flash(' este nome não é válido ')
+        flash('este nome não é válido','Nome')
     else:
         n += 1
     if utilidades.repetido_email(email) == True:
-        flash(' esta email  já está cadastrado  ')
+        flash('este email  já está cadastrado','Email')
     else:
         n += 1
     
@@ -59,10 +61,9 @@ def autenticar_conta():
     if val:
         with open ("contas.txt",'a') as contas:
             contas.write(f"\n{nome.replace(' ','-')} {email} {senha.replace(' ','-')}")
-        return redirect('/')
+        return render_template('site.html')
     else:
-         return redirect('/criar conta')
-        
+        return redirect('/criar conta')        
 
 
 #retorna a página de criar conta (sem estilização)
