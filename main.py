@@ -71,6 +71,28 @@ def autenticar_conta():
 def criaconta():
     return render_template('cria_conta.html')
 
+@app.route('/recuperar conta')
+def recuperaconta():
+    return render_template('recuperar_conta.html')
+
+@app.route('/vel conta',methods=['POST',])
+def veloconta():
+    email = request.form.get('email_recuperar_conta')
+    if utilidades.repetido_email(email):
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.run(debug=True)

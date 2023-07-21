@@ -60,7 +60,7 @@ def validador_email(email):
     else:
         return False
 
-#verifica se há outro email já cadastrado em "contas.txt"
+#verifica se há outro email já cadastrado em "contas.txt". Caso sim retorna True
 def repetido_email(email):
     with open('contas.txt','r') as contas:
         for conta in contas:
