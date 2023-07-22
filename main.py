@@ -1,9 +1,11 @@
 #"head" do flask, importações iniciais, definição da variável "app", da secret kay
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, session
 import utilidades
 from Emails import *
 app = Flask(__name__)
 app.secret_key = 'Fabricio'
+app.config["SESSION_PERMANENT"] = False
+
 
 #página inicial
 @app.route('/')
@@ -91,6 +93,7 @@ def veloconta():
         if utilidades.repetido_email(email) == True:
             destinatario = email
             codigo = gera_codigo()
+            session["codigo"] = codigo
             enviar_email('Restauração de senha',f'{retorna_html(codigo)}','fabnasctest@gmail.com',destinatario)
             return redirect('/bgl de senha')
         else:
@@ -98,6 +101,18 @@ def veloconta():
             return redirect('/recuperar conta')
 
 
+@app.route('/validar codigo',methods=['POST',])
+def validar_codigo():
+    codigo_inserido = request.form.get('codigo_recusenha')
+    if codigo_inserido == session["codigo"]:
+        return redirect('/substituir senha')
+    else:
+        return redirect('/bgl de senha')
+
+@app.route('/nova senha',methods=['POST',])
+def definir_nova_senha():
+    nova_senha = request.form.get('nova_senha')
+    
 
 
 

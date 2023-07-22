@@ -41,7 +41,7 @@ h2#inicio_h2{
     border-radius: 5px;
     box-shadow: 0px 0px 20px 5px rgb(100, 140, 200,0.25);
 }
-a#inicio_a{
+a#inicio_a,text{
     color: white;
     font-size: 24px;
     font-family: 'Roboto', sans-serif;
@@ -102,12 +102,14 @@ polygon{
     animation-iteration-count: infinite;
     animation-direction:inherit;
     animation-timing-function: cubic-bezier(1, 1, 1, 1);
+
 }
 @keyframes bordinha{
-    0%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: 0; stroke-width: 4;}
-    33%{stroke: var(--cor-anotacao-verde); stroke-width: 4}
-    66%{stroke: var(--cor-letra-amarelo); stroke-width: 4} 
-    100%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: -56; stroke-width: 4}
+    0%{stroke: var(--cor-letra-padrao)}
+    33%{stroke: var(--cor-anotacao-verde)}
+    66%{stroke: var(--cor-letra-amarelo)} 
+    100%{stroke: var(--cor-letra-padrao)}
+    
 }
 @keyframes sumidao{
     to{
