@@ -43,13 +43,14 @@ h2#inicio_h2{
 }
 a#inicio_a{
     color: white;
-    font-size: 18px;
+    font-size: 24px;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     text-align: center;
-    display: inline-block;
-    width: 154px;
-    margin: 10px 0px 10px 239px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 a#inicio_a:hover{
     text-decoration: underline;
@@ -63,6 +64,7 @@ div#quadro_ul{
     box-shadow: 0px 0px 100px 100px rgb(100, 140, 200,0.065);
     width: 600px;
     padding: 16px;
+    margin: auto;
 }
 header#inicio_header{
     height: 140px;
@@ -71,8 +73,9 @@ h1.header_index,h2.header_index{
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 48px;
-    width: 632px;
-    margin-left: 24px;
+    width: 666px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 24px;
 }
 ul{
@@ -101,10 +104,10 @@ polygon{
     animation-timing-function: cubic-bezier(1, 1, 1, 1);
 }
 @keyframes bordinha{
-    0%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: 0; stroke-width: 2;}
-    33%{stroke: var(--cor-anotacao-verde); stroke-width: 1}
-    66%{stroke: var(--cor-letra-amarelo); stroke-width: 1}
-    100%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: -56; stroke-width: 2}
+    0%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: 0; stroke-width: 4;}
+    33%{stroke: var(--cor-anotacao-verde); stroke-width: 4}
+    66%{stroke: var(--cor-letra-amarelo); stroke-width: 4} 
+    100%{stroke: var(--cor-letra-padrao); stroke-dasharray: 28; stroke-dashoffset: -56; stroke-width: 4}
 }
 @keyframes sumidao{
     to{
@@ -113,8 +116,11 @@ polygon{
     }
 }
 svg{
-    margin-left: calc(50% - 100px);
-    margin-top: 0.5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: block;
 }
 div.conta_formulario{
     border: 1px solid rgba(100, 140, 200,0.25);
@@ -182,6 +188,9 @@ div.conta_button_div{
     display: flex;
     justify-content:space-between;
     margin-top:15px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 div.conta_button_div>p{
     font-size: 42px;
