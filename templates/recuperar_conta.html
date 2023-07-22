@@ -8,12 +8,27 @@
 </head>
 <body>
     <h1 class="conta_h1">Recuperar conta</h1>
-    <form action="/vel conta">
+    <form action="/vel conta" method="post">
         <div id="quadro_recuperar_conta">
             <label for="email_recuperar_conta" id="recuperar_conta">Email:</label>
-            <input type="email" name="" id="email_recuperar_conta" name="email_recuperar_conta">
+            <input type="email" id="email_recuperar_conta" name="emailrecuperarconta">
             <button type="submit" class="conta_button">Enviar</button>
+        </div>
+        <div class="conta_flash">
+            {% with messagess = get_flashed_messages() %}
+                {% if messagess %}
+                    {% for message in messagess %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         </div>
     </form>
 </body>
+<script>
+        setInterval(matar, 3200);
+        function matar(){
+            document.querySelector('.conta_flash').style.display = 'none'
+        }
+</script>
 </html>

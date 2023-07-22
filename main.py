@@ -1,7 +1,7 @@
 #"head" do flask, importações iniciais, definição da variável "app", da secret kay
 from flask import Flask, render_template, request, redirect, flash
 import utilidades
-from time import sleep
+from Emails import *
 app = Flask(__name__)
 app.secret_key = 'Fabricio'
 
@@ -19,8 +19,8 @@ def logar():
 #validação será melhorada considerando as contas que foram criadas no site
 @app.route('/autenticar login',methods=['POST',])
 def autenticar_login():
-    email = request.form['Email']
-    senha = request.form['SenhaLogin']
+    email = request.form.get('Email')
+    senha = request.form.get('SenhaLogin')
     senha = str(senha).replace(' ','-')
     if utilidades.validador(email,1) and utilidades.validador(senha,2):
         return render_template('site.html')
@@ -75,11 +75,27 @@ def criaconta():
 def recuperaconta():
     return render_template('recuperar_conta.html')
 
+@app.route('/bgl de senha')
+def senha_sla():
+    return render_template('tela_senha.html')
+
+
 @app.route('/vel conta',methods=['POST',])
 def veloconta():
-    email = request.form.get('email_recuperar_conta')
-    if utilidades.repetido_email(email):
-        
+    email = request.form.get('emailrecuperarconta')
+    print(email)
+    if email == '':
+        flash('por favor digite um email válido')
+        return redirect('/recuperar conta')
+    else:
+        if utilidades.repetido_email(email) == True:
+            destinatario = email
+            codigo = gera_codigo()
+            enviar_email('Restauração de senha',f'{retorna_html(codigo)}','fabnasctest@gmail.com',destinatario)
+            return redirect('/bgl de senha')
+        else:
+            flash('Este email não existe no nosso sistema')
+            return redirect('/recuperar conta')
 
 
 
