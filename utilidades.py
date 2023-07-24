@@ -1,15 +1,36 @@
-def validador(str,indice):
+contas_list = []
+with open("contas.txt","r+") as contas:
+    for conta in contas.readlines():
+        conta =  conta.split()
+        contas_list.append(conta)
+c1 = 0
+for item in contas_list:
+    for i in item:
+        c1 += 1
+        if c1 <= 3:
+            with open("contas.txt","w") as contas:
+                contas.write,
+        else:
+            print('')
+            c1 = 0
+
+def validador(str,indice,local=False):
     """
 #str - coisa a se validar
 #indice: 0 = nome; 1 = email; 2 = senha
+#local: retorna a linha em que a variável se encontra, default=False
 retorna True quando o arquivo contas.txt possui o "str" na categoria "índice
 """
 
     with open("contas.txt","r") as contas:
+        c = 0
         for palavras in contas.readlines():
+            c += 1
             palavras = palavras.split()
             if str.lower() == palavras[indice].lower():
-                return True
+                return True, c
+            if local:
+                return True, c
 
 
 def listador(indice):

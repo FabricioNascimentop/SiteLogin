@@ -105,14 +105,18 @@ def veloconta():
 def validar_codigo():
     codigo_inserido = request.form.get('codigo_recusenha')
     if codigo_inserido == session["codigo"]:
-        return redirect('/substituir senha')
+        return redirect('/nova senha')
     else:
         return redirect('/bgl de senha')
 
-@app.route('/nova senha',methods=['POST',])
+@app.route('/nova senha',methods=['POST','GET'])
 def definir_nova_senha():
-    nova_senha = request.form.get('nova_senha')
-    
+    if request.method == 'GET':
+        return render_template('trocar_senha.html')
+    else:
+        nova_senha = request.form.get('nova_senha')
+        
+
 
 
 
