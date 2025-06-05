@@ -13,6 +13,21 @@
             <input type="text" id="codigo_recusenha" name="codigo_recusenha">
             <button type="submit" class="conta_button" style="margin-left: calc(50% - 52.5px)">Enviar</button>
         </form>
+        <div class="conta_flash">
+            {% with messagess = get_flashed_messages() %}
+                {% if messagess %}
+                    {% for message in messagess %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
     </div>
 </body>
+<script>
+        setInterval(matar, 3200);
+        function matar(){
+            document.querySelector('.conta_flash').style.display = 'none'
+        }
+</script>
 </html>

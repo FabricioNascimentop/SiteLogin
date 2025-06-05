@@ -1,3 +1,8 @@
+import os
+from database import db, Usuario
+from werkzeug.security import generate_password_hash, check_password_hash
+
+
 contas_list = []
 with open("contas.txt","r+") as contas:
     for conta in contas.readlines():
@@ -59,7 +64,7 @@ def validador_nome(nome):
 
 def validador_senha(senha):
     import re
-    padrao = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-_=+{}[\]|\\;:",.<>/?]{8,}$'
+    padrao = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-_=+{}[\]|\\;:",.<>/?]{8,}$'
     re = re.compile(padrao)
     if re.match(senha):
         return True
@@ -92,3 +97,16 @@ def repetido_email(email):
 
 
 
+def salvar_conta(nome, email, senha):
+
+    user = Usuario.query.filter_by(email=email).first()
+    if user:
+        return False
+    novo_user = Usuario(
+        nome=nome,
+        email=email,
+        senha=generate_password_hash(senha)
+    )
+    
+    db.session.add(novo_user)
+    db.session.commit()
