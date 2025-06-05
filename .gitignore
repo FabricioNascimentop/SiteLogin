@@ -1,0 +1,19 @@
+# Virtualenv
+venv/
+.venv/
+
+# Bytecode e cache
+__pycache__/
+*.pyc
+
+# Configurações de IDE
+.vscode/
+.idea/
+
+# Arquivos sensíveis
+.env
+*.secret
+
+# Logs e outputs
+*.log
+logs/
