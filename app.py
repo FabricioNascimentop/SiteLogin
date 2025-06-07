@@ -56,7 +56,7 @@ def autenticar_conta():
     erro = False
 
     if user:
-        flash('este email já está cadastrado')
+        flash('este email já está cadastrado', category="Senha")
         erro = True
     else:
         if not utilidades.validador_nome(nome):
@@ -72,24 +72,24 @@ def autenticar_conta():
         if utilidades.validador_nome(nome) and utilidades.validador_email(email) and utilidades.validador_senha(senha):
             flash('conta criada com sucesso')
 
-        if erro:
-            print('tem erro')
-            return redirect('/criar conta')
-        
-        if not erro:
-            try:
-                novo_usuario = Usuario(nome=nome,email=email,senha=generate_password_hash(senha))
-                db.session.add(novo_usuario)
-                db.session.commit()
-                flash('Conta criada com sucesso! Faça login para continuar.', 'success')
+    if erro:
+        print('tem erro')
+        return redirect('/criar conta')
+    
+    if not erro:
+        try:
+            novo_usuario = Usuario(nome=nome,email=email,senha=generate_password_hash(senha))
+            db.session.add(novo_usuario)
+            db.session.commit()
+            flash('Conta criada com sucesso! Faça login para continuar.', 'success')
 
-            except Exception as e:
-                db.session.rollback()
-                flash('Erro ao criar conta. Por favor, tente novamente.', 'Senha')
-                return redirect('/criar conta')
+        except Exception as e:
+            db.session.rollback()
+            flash('Erro ao criar conta. Por favor, tente novamente.', 'Senha')
+            return redirect('/criar conta')
                 
         
-            return render_template('site.html')
+    return render_template('site.html')
        
 
 
