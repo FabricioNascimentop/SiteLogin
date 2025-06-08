@@ -150,6 +150,35 @@ input{
     margin: 15px;
     border-radius: 15px;
 }
+div#slaLogin{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 65px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+}
+div#slaLogin > input, div#slaLogin > a > input{
+    max-width: 200px;
+    height: 40px;
+    margin: 0px;
+    cursor: pointer;
+}
+div#slaLogin > p{
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+}
+input#btn_enviar{
+    max-width: 150px;
+    margin: 0px;
+    height: 43px;
+    font-weight: 600;
+}
+
 button.conta_button{
     padding: 8px;
     width: 115px;
@@ -162,14 +191,19 @@ a.conta_a_bostao{
     text-decoration: none;
     text-align: center;
     color: black;
-    font-size: 18px;
+    font-size: 15px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     background-color: whitesmoke;
     padding: 8px;
-    width: 94px;
+    width: 120px;
     height: 23px;
     border: 1px solid gray;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
 }
 div.conta_flash{
     color:crimson;
@@ -190,7 +224,7 @@ div.conta_button_div{
     display: flex;
     justify-content:space-between;
     margin-top:15px;
-    width: 300px;
+    width: 380px;
     margin-left: auto;
     margin-right: auto;
 }

@@ -9,17 +9,27 @@
 <body>
     <h1 class="conta_h1">Efetue seu login</h1>
     <div class="conta_formulario">
-        <form action="/autenticar login" method="post">
-            <label>Email:<input type="text" id="Email" name="Email"></label>
-
-            <label>Senha:<input type="text" id="SenhaLogin" name="SenhaLogin"></label>
-
-            <div class="conta_button_div">
-                <button type="submit" class="conta_button" onclick="esconder()">Enviar</button>
-                <p>ou</p>
-                <a href="/criar conta" class="conta_a_bostao">criar conta</a>
+       <form action="/autenticar login" method="post">
+            {{ form.hidden_tag() }}
+            <div>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}<br>
+            {{ form.email.errors[0] if form.email.errors }}
             </div>
-        </div>
+            <div>
+            {{ form.senha.label }}<br>
+            {{ form.senha(size=32) }}<br>
+            {{ form.senha.errors[0] if form.senha.errors }}
+            </div>
+            <div id="slaLogin">
+                {{ form.submit() }}
+                <p>ou</p>
+                <a href="/criar conta" style="display: contents;">
+                    <input type="button" value="Criar conta">
+                </a>
+            </div>
+        </form>
+    </div>
         <div class="conta_flash">
             {% with messagess = get_flashed_messages() %}
                 {% if messagess %}

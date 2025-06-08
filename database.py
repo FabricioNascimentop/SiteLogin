@@ -29,8 +29,12 @@ class Usuario(db.Model):
         return f'<User {self.username}>'
     
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.senha = generate_password_hash(password,  method="pbkdf2:sha256", salt_length=16)
     
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    @property
+    def password(self):
+        raise AttributeError("Password is write-only")
 

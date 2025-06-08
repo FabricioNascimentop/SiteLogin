@@ -8,52 +8,80 @@
 </head>
 <body>
     <h1 class="conta_h1">Crie aqui sua conta</h1>
+    <div class="conta_flash">
+            {% with messagess = get_flashed_messages() %}
+                {% if messagess %}
+                    {% for message in messagess %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
     <div class="conta_formulario">
-        <form action="/autenticar conta" method="post">
-            <label>Nome:<input type="text" name="Nomecriarconta"></label>
-
-            <div class="conta_flash">
-                {% with messages = get_flashed_messages(category_filter=["Nome"]) %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </div>
-
-            <label>Email:<input type="text" name="Emailcriarconta"></label>
-            
-            <div class="conta_flash">
-                {% with messages = get_flashed_messages(category_filter=["Email"]) %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </div>
-
-            <label>Senha:<input type="text" name="Senhacriaconta"></label>
-            
-            <div class="conta_flash">
-                {% with messages = get_flashed_messages(category_filter=["Senha"]) %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </div>
-
-            <div class="conta_button_div">
-                <button type="submit" class="conta_button">Enviar</button> 
-                <p>ou</p>
-                <a href="/login" class="conta_a_bostao">login</a>
-            </div>
-    
-        </form>
-    </div>
+            <form action="/autenticar conta" method="post">
+                {{ form.hidden_tag() }}
+                
+                <!-- Campo Nome -->
+                <div class="form-group">
+                    {{ form.nome.label }}
+                    {{ form.nome(placeholder="Digite seu nome completo") }}
+                    <div class="conta_flash">
+                        {% if form.nome.errors %}
+                            {% for error in form.nome.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Campo Email -->
+                <div class="form-group">
+                    {{ form.email.label }}
+                    {{ form.email(placeholder="seu.email@exemplo.com") }}
+                    <div class="conta_flash">
+                        {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Campo Senha -->
+                <div class="form-group">
+                    {{ form.senha.label }}
+                    {{ form.senha(placeholder="Crie uma senha segura") }}
+                    
+                    <div class="conta_flash">
+                        {% if form.senha.errors %}
+                            {% for error in form.senha.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Campo Confirmar Senha -->
+                <div class="form-group">
+                    {{ form.confirmar_senha.label }}
+                    {{ form.confirmar_senha(placeholder="Repita sua senha") }}
+                    <div class="conta_flash">
+                        {% if form.confirmar_senha.errors %}
+                            {% for error in form.confirmar_senha.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Botões de ação -->
+                <div class="conta_button_div">
+                    {{ form.submit(class="conta_button",id="btn_enviar") }}
+                    <p>ou</p>
+                    <a href="/login" class="conta_a_bostao">Fazer Login</a>
+                </div>
+            </form>
+        </div>
 
     <script>
         setInterval(esconder, 3200);
@@ -68,6 +96,9 @@
                 document.querySelectorAll('.conta_flash')[c].style.display = 'none'
             }
         }
+            
+
+        
     </script>
 </body>
 </html>
