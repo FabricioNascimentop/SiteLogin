@@ -3,47 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SiteLogin</title>
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1 class="header_index">Portifólio Fabricio Nascimento</h1>
+    <h1 class="header_index">Portfólio Fabricio Nascimento</h1>
         <svg height="47" width="314">
             <polygon points="0,0 314,0 314,47 0,47" style="stroke-width: 2.5px;"/>
             <a xlink:href="/login">
                     <text x="10" y="30" fill="white">Clique aqui para fazer login</text>
         </svg>
-    
+
     <div id="quadro_ul">
-        <h2 id="inicio_h2">Flask Backending</h2>
+        <h2 id="inicio_h2">Flask backend</h2>
     <ul id="ul_inicio">
-        <li style="color: rgb(134,217,63);">#html e estilização css responsiva (bônus)</li>
-        <li><span style="text-decoration: underline; font-size: 1.25em;">as seguintes validações em cada categoria</span>:
+        <li style="color: rgb(134,217,63);">#interface desenvolvida com HTML5 e CSS responsivo</li>
+        <li><span style="text-decoration: underline; font-size: 1.25em;">tecnologias e validações aplicadas no backend</span>:
             <ul id="dentro">
-                <li class="listrinha">email:</li>
+                <li class="listrinha">Flask-WTF:</li>
                     <ul>
-                        <li>apenas uma conta email no sistema</li>
-                        <li>validação baseada em emails reais, apenas letras, numeros e alguns caracteres especiais são permitidos tais como "_" ou "-"</li>
+                        <li>validação de formulários de login, cadastro e recuperação de senha</li>
+                        <li>proteção automática contra CSRF e mensagens de erro dinâmicas</li>
                     </ul>
-                <li class="listrinha">nome:</li>
+                <li class="listrinha">JWT (JSON Web Token):</li>
                     <ul>
-                        <li>no mínimo 3 letras e no máximo 16</li>
-                        <li>permite e funciona com todas as variações do alfabeto latino</li>
-                        <li>aceita alguns caracteres especiais como o apóstrofos (') e o hífen (-) e espaços em branco</li>
+                        <li>autenticação baseada em tokens seguros e reutilizáveis</li>
+                        <li>controle de sessões sem armazenar dados no servidor</li>
+                        <li>rotas protegidas que exigem autorização do token</li>
                     </ul>
-                <li class="listrinha">senha:</li>
+                <li class="listrinha">SQLAlchemy + Hash:</li>
                     <ul>
-                        <li>no mínimo 8 caracteres</li>
-                        <li>no mínimo uma letra maiúscula</li>
-                        <li>no mínimo um número</li>
-                        <li>no mínimo um caractere especial  (@#$%^&*)</li>
+                        <li>uso do ORM para manipulação segura e prática do banco de dados</li>
+                        <li>senhas criptografadas com algoritmo de hash (bcrypt ou werkzeug.security)</li>
+                        <li>armazenamento seguro de credenciais e verificação eficiente durante o login</li>
+                    </ul>
+                <li class="listrinha">Flask Blueprint:</li>
+                    <ul>
+                        <li>estrutura modularizada com separação de rotas por funcionalidade</li>
+                        <li>facilidade para escalar e manter o projeto organizado</li>
                     </ul>
             </ul>
         </li>
-        <li style="color: rgb(134,217,63)">#feito com muito carinho e afinco para concretizar todas as horas de esforço que coloquei estudando e praticando, a realização de um projeto que apesar de pequeno é sólido como este é a prova de que o esforço move mundos</li>
+        <li style="color: rgb(134,217,63)">#um sistema seguro, modular e bem estruturado — resultado de estudo prático em Flask, voltado à criação de APIs profissionais com autenticação e manipulação de dados segura</li>
     </ul>
     </div>
-    
 </body>
-
 </html>
