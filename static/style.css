@@ -152,15 +152,14 @@ input{
     border-radius: 15px;
     padding-left: 10px;
 }
-div#slaLogin{
+div#slaLogin {
     display: flex;
-    align-content: center;
-    height: 65px;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 25px;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; 
 }
+
 div#slaLogin > input, div#slaLogin > a > input{
     max-width: 200px;
     height: 40px;
@@ -172,6 +171,25 @@ div#slaLogin > p{
     color: white;
     font-size: 24px;
     font-weight: 500;
+}
+div#slaLoginContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+div#slaLoginContent > a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    font-size: 24px;
+    font-weight: 500;
+}
+div#slaLoginContent > a > button{
+    width: 200px;
+    height: 40px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 input#btn_enviar{
     max-width: 150px;
@@ -262,3 +280,48 @@ input#email_recuperar_conta{
     width: 80%;
     height: 36px;
 }
+/* Social Login Buttons */
+.social-login-button {
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    padding: 8px;
+    width: 120px;
+    height: 40px; /* Increased height for better appearance */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    margin: 0 5px; /* Add some margin between buttons */
+}
+
+.social-login-button:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.google-button {
+    background-color: #DB4437; /* Google Red */
+    color: white;
+    border: 1px solid #DB4437;
+}
+
+.google-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.facebook-button {
+    background-color: #4267B2; /* Facebook Blue */
+    color: white;
+    border: 1px solid #4267B2;
+}
+
+.facebook-button:hover {
+    background-color: #365899; /* Darker blue on hover */
+}
+

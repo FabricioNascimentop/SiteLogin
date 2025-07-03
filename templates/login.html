@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
@@ -27,8 +27,17 @@
                 <a href="/criar conta" style="display: contents;">
                     <input type="button" value="Criar conta">
                 </a>
-                <a class="conta_a_bostao" href="/login/google">Google</a>
-                <a class="conta_a_bostao" href="/login/facebook">Facebook</a>
+
+                <div id="slaLoginContent">
+                    
+                    <a href="/login/google">
+                        <button type="button" class="social-login-button google-button">Login com Google</button>
+                    </a>
+                    <a href="/login/facebook">
+                        <button type="button" class="social-login-button facebook-button">Login com Facebook</button>
+                    </a>
+
+                </div>
             </div>
 
         </form>
