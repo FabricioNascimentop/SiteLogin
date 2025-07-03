@@ -3,6 +3,9 @@ from helper import validador_email, validador_nome, validador_senha, CriarContaF
 from Emails import *
 from database import db, Usuario
 from werkzeug.security import generate_password_hash, check_password_hash
+from . import oauth
+from flask_login import login_user, login_required, logout_user  # type: ignore # Para gerenciar logins
+
 
 postsBP = Blueprint('auth', __name__)
 
@@ -10,7 +13,6 @@ postsBP = Blueprint('auth', __name__)
 
 
 #função e rota que autentica a entrada no site
-#validação será melhorada considerando as contas que foram criadas no site
 @postsBP.route('/autenticar login',methods=['POST',])
 def autenticar_login():
     email_input = request.form.get('email')
@@ -25,7 +27,6 @@ def autenticar_login():
     else:
         flash('não há usuários com este email')
         return redirect('/login')
-    
     
 
 #autenticar criação de conta 
@@ -141,3 +142,43 @@ def veloconta():
     if not user:
         flash('Este email não existe no nosso sistema')
         return redirect('/recuperar conta')
+
+@postsBP.route('/login/facebook')
+def facebook():
+    """Começa o login pelo Facebook"""
+    redirect_uri = url_for('auth.facebook_auth', _external=True)  
+    return oauth.facebook.authorize_redirect(redirect_uri) 
+
+@postsBP.route('/facebook/callback')
+def facebook_auth():
+    """Volta do Facebook com a resposta"""
+    try:
+        # Pega o token de acesso do Facebook
+        token = oauth.facebook.authorize_access_token()
+        # Pega informações do usuário
+        resp = oauth.facebook.get('https://graph.facebook.com/me?fields=id,name,email')
+        profile = resp.json()
+        
+        if 'error' in profile:
+            return redirect('/login_failed')  # Se deu erro
+        else:
+            # Pega informações do perfil
+            user_id = profile.get('id')
+            user_name = profile.get('name', 'Usuário')
+            user_email = profile.get('email', '')
+
+            # Verifica se o usuário já existe
+            usuario = Usuario.query.filter_by(email=user_email).first()
+            if usuario:
+                login_user(usuario)  # Faz login
+                return redirect(f'/?name={user_name}&email={user_email}&id={user_id}')
+            else:
+                # Cria novo usuário
+                usuario = Usuario(nome=user_name, email=user_email)
+                db.session.add(usuario)
+                db.session.commit()
+                return redirect('/')
+
+    except Exception as e:
+        print("Erro:", str(e))
+        return redirect('/login_failed')

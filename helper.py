@@ -1,10 +1,17 @@
-import os
 from database import db, Usuario
 from werkzeug.security import generate_password_hash
-
+from dotenv import load_dotenv
+import os
 from flask_wtf import FlaskForm
 from wtforms import EmailField, PasswordField, SubmitField, StringField
 from wtforms.validators import DataRequired, Email, Length, Regexp, EqualTo
+
+
+
+
+google_client_id = os.getenv("google_client_id")
+google_client_secret = os.getenv("google_client_secret")
+
 
 class LoginForm(FlaskForm):
     email = EmailField(
